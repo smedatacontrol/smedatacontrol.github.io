@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>404 · Página no disponible</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #eef0ff;
+    background: radial-gradient(ellipse at 50% 75%, #2b2263 0%, #130f33 45%, #06050f 100%) fixed;
+  }
+
+  #stars { position: fixed; inset: 0; pointer-events: none; }
+  #stars i {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    animation: twinkle var(--d) ease-in-out var(--w) infinite alternate;
+  }
+  @keyframes twinkle { from { opacity: .15; } to { opacity: .9; } }
+
+  #flash {
+    position: fixed; inset: 0; pointer-events: none; opacity: 0; z-index: 3;
+    background: radial-gradient(circle at 50% 50%, #fff9c4 0%, #ffd60a55 35%, transparent 70%);
+  }
+
+  main {
+    position: relative; z-index: 1;
+    flex: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: clamp(4px, 1.5vh, 16px);
+    padding: 16px;
+    text-align: center;
+  }
+
+  .code {
+    font-size: clamp(5rem, min(22vh, 34vw), 12rem);
+    font-weight: 900;
+    line-height: .95;
+    letter-spacing: .04em;
+    color: #fff;
+    text-shadow: 0 0 8px #fff, 0 0 22px #ff4dd2, 0 0 48px #ff4dd2, 0 0 90px #7b2ff7;
+    animation: flicker 6s linear infinite;
+    user-select: none;
+  }
+  .code.zap {
+    color: #fffbe0;
+    text-shadow: 0 0 8px #fff, 0 0 24px #ffd60a, 0 0 60px #ffd60a, 0 0 110px #ff9500;
+  }
+  @keyframes flicker {
+    0%, 41%, 45%, 100% { opacity: 1; }
+    43% { opacity: .55; }
+  }
+
+  #scene {
+    width: min(760px, 100%);
+    height: auto;
+    max-height: 44vh;
+    overflow: visible;
+    cursor: pointer;
+  }
+
+  h1 { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 800; }
+
+  p { max-width: 34rem; color: #b9bce6; font-size: clamp(.95rem, 2.2vw, 1.1rem); line-height: 1.5; }
+
+  button {
+    margin-top: 8px;
+    padding: 14px 30px;
+    border: 0; border-radius: 999px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #16102e;
+    background: linear-gradient(90deg, #ffd60a, #ff8fab, #5ee7ff, #ffd60a);
+    background-size: 300% 100%;
+    box-shadow: 0 0 24px #ff4dd266;
+    cursor: pointer;
+    animation: slide 5s linear infinite;
+    transition: transform .15s, box-shadow .15s;
+  }
+  button:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 0 36px #ffd60aaa; }
+  button:active { transform: scale(.97); }
+  button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  @keyframes slide { to { background-position: 300% 0; } }
+
+  .shake { animation: shake .12s linear infinite; }
+  @keyframes shake {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-4px, 2px); }
+    75% { transform: translate(4px, -2px); }
+  }
+
+  #bubble { transition: opacity .2s; }
+  #bubble text { font: 800 17px system-ui, "Segoe UI", sans-serif; fill: #16102e; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    button { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div>
+<div id="flash" aria-hidden="true"></div>
+
+<main>
+  <div class="code" id="code" aria-hidden="true">404</div>
+
+  <svg id="scene" viewBox="150 60 500 330" role="img" aria-label="Un cavernícola intenta conectar dos cables y se electrocuta">
+    <defs>
+      <radialGradient id="halo">
+        <stop offset="0" stop-color="#8f7bff" stop-opacity=".45"/>
+        <stop offset="1" stop-color="#8f7bff" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#6d6aa6"/>
+        <stop offset="1" stop-color="#34315f"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Luna -->
+    <circle cx="590" cy="110" r="55" fill="url(#halo)"/>
+    <path d="M598 86a26 26 0 1 0 14 42 22 22 0 0 1-14-42z" fill="#fff3bf"/>
+
+    <!-- Suelo -->
+    <ellipse cx="400" cy="362" rx="290" ry="12" fill="#1d1848"/>
+    <path d="M110 361H690" stroke="#6a5fd0" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+
+    <!-- Rocas -->
+    <g fill="url(#stone)">
+      <path d="M213 360c4-42 10-62 28-62s26 22 30 62z"/>
+      <rect x="205" y="278" width="74" height="22" rx="11"/>
+      <rect x="226" y="268" width="32" height="12" rx="4"/>
+      <ellipse cx="242" cy="252" rx="13" ry="18"/>
+      <path d="M522 360c4-100 14-178 46-178s44 78 48 178z"/>
+    </g>
+    <g text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" fill="#c9c6f5" opacity=".7">
+      <text x="569" y="250" font-size="19">R.I.P.</text>
+      <text x="569" y="272" font-size="13">esta web</text>
+    </g>
+
+    <!-- Arbustos -->
+    <g fill="#35c48b">
+      <path d="M170 361c-6-14 6-22 15-17 3-14 24-14 26-1 11-5 21 6 15 18z"/>
+      <path d="M262 361c2-9 11-11 16-6 6-8 18-5 19 2 7-2 11 1 11 4z" fill="#2a9d70"/>
+      <path d="M498 361c-3-12 8-17 15-12 4-11 20-9 22 1 8-2 13 5 10 11z"/>
+      <path d="M610 361c2-8 10-10 15-6 5-8 17-6 18 1 8-2 12 2 11 5z" fill="#2a9d70"/>
+    </g>
+
+    <!-- Cavernícola -->
+    <g id="hero">
+      <g id="legs" fill="none" stroke-linecap="round">
+        <path id="legL" stroke="#e8ad88" stroke-width="15"/>
+        <path id="legR" stroke="#e8ad88" stroke-width="15"/>
+        <ellipse id="footL" rx="12" ry="6" fill="#d99a76"/>
+        <ellipse id="footR" rx="12" ry="6" fill="#d99a76"/>
+      </g>
+
+      <g id="torso">
+        <rect x="370" y="240" width="60" height="66" rx="22" fill="#e8ad88"/>
+        <path d="M372 266L416 242Q428 244 431 256L438 316L429 309L420 318L410 310L400 318L390 310L380 318L371 310L362 316Z" fill="#e59a2f"/>
+        <g fill="#a85d16">
+          <circle cx="384" cy="282" r="4"/><circle cx="411" cy="266" r="5"/><circle cx="402" cy="293" r="4"/>
+          <circle cx="424" cy="285" r="3.5"/><circle cx="376" cy="302" r="3"/><circle cx="419" cy="304" r="4.5"/>
+        </g>
+        <g class="bones" opacity="0" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none">
+          <rect x="368" y="244" width="64" height="70" rx="20" fill="#241a3d" stroke="none" opacity=".82"/>
+          <path d="M400 252V298M382 260Q400 252 418 260M380 272Q400 263 420 272M384 284Q400 276 416 284"/>
+          <path d="M385 298Q382 312 398 308M415 298Q418 312 402 308"/>
+        </g>
+      </g>
+
+      <g id="head">
+        <circle cx="374" cy="222" r="7" fill="#d99a76"/>
+        <circle cx="426" cy="222" r="7" fill="#d99a76"/>
+        <ellipse cx="400" cy="220" rx="26" ry="29" fill="#e8ad88"/>
+        <path id="hair" d="M373 218C366 188 392 184 402 190C420 182 436 198 427 218C420 204 414 202 404 205C392 198 380 202 373 218Z" fill="#4a2614"/>
+        <path id="frazz" d="M372 216L362 190L378 198L376 170L392 188L401 160L409 187L427 169L423 196L440 188L428 218C416 200 386 200 372 216Z" fill="#4a2614" opacity="0"/>
+        <path d="M374 224C372 252 384 272 400 270C416 272 428 252 426 224C420 238 410 232 400 234C390 232 380 238 374 224Z" fill="#4a2614"/>
+        <ellipse id="mouth" cx="400" cy="246" rx="7" ry="2.5" fill="#1c0b05"/>
+        <g id="eyes" fill="#1c0b05">
+          <ellipse class="eye" cx="390" cy="217" rx="3" ry="3.5"/>
+          <ellipse class="eye" cx="410" cy="217" rx="3" ry="3.5"/>
+        </g>
+        <path id="dizzy" d="M386 213l8 8M394 213l-8 8M406 213l8 8M414 213l-8 8" stroke="#1c0b05" stroke-width="2.5" stroke-linecap="round" opacity="0"/>
+        <path id="brows" stroke="#4a2614" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <ellipse cx="400" cy="227" rx="6.5" ry="8" fill="#d48c6a"/>
+        <g class="bones" opacity="0">
+          <path d="M378 215a22 23 0 0 1 44 0c0 11-6 14-9 18v10h-26v-10c-3-4-9-7-9-18z" fill="#fff"/>
+          <circle cx="390" cy="217" r="6.5" fill="#241a3d"/><circle cx="410" cy="217" r="6.5" fill="#241a3d"/>
+          <path d="M400 224l-4 7h8zM389 237h22M394 233v10M400 233v10M406 233v10" stroke="#241a3d" stroke-width="1.5" fill="#241a3d"/>
+        </g>
+      </g>
+
+      <g fill="none" stroke-linecap="round">
+        <path id="cableL" stroke="#ff4d6d" stroke-width="4"/>
+        <path id="cableR" stroke="#3ad7ff" stroke-width="4"/>
+      </g>
+      <g id="plugL"><rect x="-7" y="-5" width="14" height="10" rx="3" fill="#ff4d6d"/><path d="M7-2h6M7 2h6" stroke="#ffe9a8" stroke-width="2"/></g>
+      <g id="plugR"><rect x="-7" y="-5" width="14" height="10" rx="3" fill="#3ad7ff"/><path d="M-7-2h-6M-7 2h-6" stroke="#ffe9a8" stroke-width="2"/></g>
+
+      <g fill="none" stroke-linecap="round">
+        <path id="armL" stroke="#e8ad88" stroke-width="15"/>
+        <path id="armR" stroke="#e8ad88" stroke-width="15"/>
+        <g class="bones" opacity="0" stroke="#fff" stroke-width="4">
+          <path id="bArmL"/><path id="bArmR"/><path id="bLegL"/><path id="bLegR"/>
+        </g>
+      </g>
+      <circle id="handL" r="9" fill="#e8ad88"/>
+      <circle id="handR" r="9" fill="#e8ad88"/>
+    </g>
+
+    <!-- Efectos -->
+    <g id="bolts" fill="none" stroke="#fff27a" stroke-width="3" stroke-linejoin="round"></g>
+    <g id="sparks"></g>
+    <g id="smoke" fill="#c9c6f5"></g>
+    <g id="orbit" fill="#ffd60a" font-size="20" text-anchor="middle" opacity="0">
+      <text>★</text><text>✦</text><text>★</text>
+    </g>
+
+    <g id="bubble" opacity="0">
+      <path id="bubbleShape" fill="#fff"/>
+      <text id="bubbleText" text-anchor="middle"></text>
+    </g>
+  </svg>
+
+  <h1>¡Ups! Esta página ya no existe</h1>
+  <p>El sitio que buscas ya no está disponible. Intentamos reconectarlo&hellip; pero no salió muy bien.</p>
+  <button type="button" id="zapBtn">⚡ Conectar los cables</button>
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const NS = "http://www.w3.org/2000/svg";
+
+  /* ---------- Estrellas ---------- */
+  const stars = $("stars");
+  for (let i = 0; i < 90; i++) {
+    const s = document.createElement("i");
+    const size = Math.random() * 2.2 + .6;
+    s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;width:${size}px;height:${size}px;--d:${1.5 + Math.random() * 3}s;--w:${-Math.random() * 4}s`;
+    stars.appendChild(s);
+  }
+
+  /* ---------- Poses ----------
+     x, y, tilt: cuerpo | head: giro de cabeza | hl/el: mano y codo izquierdos
+     fl/kl: pie y rodilla izquierdos (r = derechos) | grip: 1 = sujeta el cable
+     scratch: se rasca | shock: rayos X | frazz: pelo de punta | dizzy: mareado */
+  const base = {
+    x: 0, y: 0, tilt: 0, head: 0,
+    hlx: 362, hly: 300, elx: 346, ely: 276,
+    hrx: 438, hry: 300, erx: 454, ery: 276,
+    flx: 385, fly: 356, klx: 385, kly: 332,
+    frx: 415, fry: 356, krx: 415, kry: 332,
+    gripL: 1, gripR: 1, scratch: 0, shock: 0, frazz: 0, dizzy: 0
+  };
+  const pose = o => Object.assign({}, base, o);
+
+  const think = pose({
+    x: -4, y: 6, tilt: -18, head: -6,
+    hlx: 338, hly: 352, elx: 332, ely: 308,
+    hrx: 394, hry: 202, erx: 446, ery: 220,
+    flx: 382, klx: 376, frx: 420, krx: 414,
+    scratch: 1
+  });
+  const inspect = pose({
+    x: -4, y: 4, tilt: -12, head: -14,
+    hlx: 326, hly: 254, elx: 328, ely: 302,
+    hrx: 398, hry: 204, erx: 450, ery: 220,
+    flx: 382, klx: 378, frx: 420, krx: 416,
+    scratch: .4
+  });
+  const stand = pose({});
+  const aim = pose({ y: 3, hlx: 362, hly: 280, elx: 338, ely: 292, hrx: 438, hry: 280, erx: 462, ery: 292 });
+  const touch = pose({ y: 6, hlx: 387, hly: 283, elx: 346, ely: 298, hrx: 413, hry: 283, erx: 454, ery: 298 });
+  const shock = pose({
+    y: -88, shock: 1, frazz: 1,
+    hlx: 312, hly: 132, elx: 340, ely: 172,
+    hrx: 488, hry: 132, erx: 460, ery: 172,
+    flx: 336, fly: 272, klx: 356, kly: 228,
+    frx: 464, fry: 272, krx: 444, kry: 228
+  });
+  const fall = pose({
+    y: -46, tilt: 10, head: 8, frazz: 1, gripL: 0, gripR: 0,
+    hlx: 328, hly: 218, elx: 336, ely: 180,
+    hrx: 474, hry: 178, erx: 466, ery: 224,
+    flx: 372, fly: 326, klx: 346, kly: 294,
+    frx: 448, fry: 312, krx: 452, kry: 274
+  });
+  const sit = pose({
+    y: 38, frazz: 1, dizzy: 1, gripL: 0, gripR: 0,
+    hlx: 386, hly: 352, elx: 344, ely: 326,
+    hrx: 414, hry: 352, erx: 456, ery: 326,
+    flx: 370, fly: 356, klx: 346, kly: 322,
+    frx: 430, fry: 356, krx: 454, kry: 322
+  });
+  const pickup = pose({
+    y: 30, frazz: .4,
+    hlx: 362, hly: 352, elx: 340, ely: 318,
+    hrx: 438, hry: 352, erx: 460, ery: 318,
+    flx: 378, klx: 358, frx: 422, krx: 442
+  });
+
+  /* [pose, segundos de transición, segundos de pausa, texto, efecto] */
+  const steps = [
+    [think,   .7,  2.1, "Hmm…"],
+    [inspect, .5,  1.3, "¿Y la web?"],
+    [think,   .5,  .9,  ""],
+    [stand,   .6,  .9,  "¡Ya sé!"],
+    [aim,     .35, .5,  ""],
+    [touch,   .45, .25, "Si junto esto…", "spark"],
+    [shock,   .14, 1.5, "¡¡ZAAAP!!", "zap"],
+    [fall,    .3,  .05, ""],
+    [sit,     .3,  2.2, "Ay…", "smoke"],
+    [pickup,  .6,  .5,  "Otra vez…"],
+    [stand,   .5,  .4,  ""]
+  ];
+
+  const starts = [];
+  const total = steps.reduce((t, s) => { starts.push(t); return t + s[1] + s[2]; }, 0);
+
+  const ease = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+  const mix = (a, b, k) => a + (b - a) * k;
+  const f = n => n.toFixed(1);
+
+  function sample(t) {
+    let i = steps.length - 1;
+    while (i > 0 && t < starts[i]) i--;
+    const [to, dur, , text, fx] = steps[i];
+    const from = steps[(i - 1 + steps.length) % steps.length][0];
+    const local = t - starts[i];
+    const k = ease(Math.min(1, local / dur));
+    const p = {};
+    for (const key in base) p[key] = mix(from[key], to[key], k);
+    return { p, text, fx, local };
+  }
+
+  /* Convierte un punto del torso a coordenadas de la escena */
+  function onBody(p, x, y) {
+    const a = p.tilt * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+    const dx = x - 400, dy = y - 310;
+    return [400 + dx * c - dy * s + p.x, 310 + dx * s + dy * c + p.y];
+  }
+
+  /* Extremidad curva que pasa por el codo o la rodilla */
+  const limb = (a, m, b) =>
+    `M${f(a[0])} ${f(a[1])}Q${f(2 * m[0] - (a[0] + b[0]) / 2)} ${f(2 * m[1] - (a[1] + b[1]) / 2)} ${f(b[0])} ${f(b[1])}`;
+
+  const set = (id, attrs) => {
+    const node = $(id);
+    for (const k in attrs) node.setAttribute(k, attrs[k]);
+  };
+
+  const bones = document.querySelectorAll(".bones");
+  const eyes = document.querySelectorAll(".eye");
+  const orbit = $("orbit");
+  const sparks = [], puffs = [];
+
+  function particle(list, parent, node, data) {
+    parent.appendChild(node);
+    list.push(Object.assign({ node, age: 0 }, data));
+  }
+
+  function addSpark(x, y, power) {
+    const node = document.createElementNS(NS, "circle");
+    node.setAttribute("r", f(1.2 + Math.random() * 2));
+    node.setAttribute("fill", ["#fff", "#fff27a", "#ffb703", "#5ee7ff"][Math.random() * 4 | 0]);
+    const a = Math.random() * Math.PI * 2, v = (40 + Math.random() * 130) * power;
+    particle(sparks, $("sparks"), node, { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 40, life: .35 + Math.random() * .5 });
+  }
+
+  function addPuff(x, y) {
+    const node = document.createElementNS(NS, "circle");
+    particle(puffs, $("smoke"), node, { x: x + Math.random() * 30 - 15, y, vx: Math.random() * 16 - 8, vy: -30, life: 1.3 });
+  }
+
+  function stepParticles(list, dt, draw) {
+    for (let i = list.length - 1; i >= 0; i--) {
+      const q = list[i];
+      q.age += dt;
+      if (q.age >= q.life) { q.node.remove(); list.splice(i, 1); continue; }
+      q.x += q.vx * dt;
+      q.y += q.vy * dt;
+      draw(q, 1 - q.age / q.life);
+    }
+  }
+
+  function bolt(from, to) {
+    let d = `M${f(from[0])} ${f(from[1])}`;
+    for (let i = 1; i < 6; i++) {
+      d += `L${f(mix(from[0], to[0], i / 6) + Math.random() * 28 - 14)} ${f(mix(from[1], to[1], i / 6) + Math.random() * 28 - 14)}`;
+    }
+    return d + `L${f(to[0])} ${f(to[1])}`;
+  }
+
+  let bubbleCache = "";
+  function bubble(text, x, y, loud) {
+    $("bubble").setAttribute("opacity", text ? 1 : 0);
+    if (!text) return;
+    if (text !== bubbleCache) {
+      bubbleCache = text;
+      $("bubbleText").textContent = text;
+    }
+    const w = Math.max(60, $("bubbleText").getComputedTextLength() + 28);
+    const bx = x - (loud ? 135 : 100), by = Math.max(80, y - 50);
+    set("bubbleText", { x: f(bx), y: f(by + 6) });
+    set("bubbleShape", {
+      d: `M${f(bx - w / 2 + 17)} ${f(by - 17)}h${f(w - 34)}a17 17 0 0 1 0 34h-8l14 14-30-14h${f(-(w - 58))}a17 17 0 0 1 0-34z`,
+      fill: loud ? "#ffd60a" : "#fff"
+    });
+  }
+
+  function render(t, time, dt) {
+    const { p, text, fx, local } = sample(t);
+    const zapping = fx === "zap";
+
+    /* Movimientos secundarios */
+    p.y += Math.sin(time * 3) * 1.2 * (1 - p.shock);
+    p.hrx += Math.sin(time * 18) * 5 * p.scratch;
+    p.hry += Math.cos(time * 18) * 2.5 * p.scratch;
+    if (zapping) {
+      const jx = Math.random() * 8 - 4, jy = Math.random() * 8 - 4;
+      p.x += jx; p.y += jy;
+      ["hl", "hr", "fl", "fr", "el", "er", "kl", "kr"].forEach(k => { p[k + "x"] += jx; p[k + "y"] += jy; });
+    }
+
+    const bodyT = `translate(${f(p.x)} ${f(p.y)}) rotate(${f(p.tilt)} 400 310)`;
+    set("torso", { transform: bodyT });
+    set("head", { transform: `${bodyT} rotate(${f(p.head)} 400 248)` });
+
+    const HL = [p.hlx, p.hly], HR = [p.hrx, p.hry];
+    const armL = limb(onBody(p, 376, 253), [p.elx, p.ely], HL);
+    const armR = limb(onBody(p, 424, 253), [p.erx, p.ery], HR);
+    const legL = limb(onBody(p, 387, 303), [p.klx, p.kly], [p.flx, p.fly]);
+    const legR = limb(onBody(p, 413, 303), [p.krx, p.kry], [p.frx, p.fry]);
+    [["armL", armL], ["armR", armR], ["legL", legL], ["legR", legR],
+     ["bArmL", armL], ["bArmR", armR], ["bLegL", legL], ["bLegR", legR]]
+      .forEach(([id, d]) => set(id, { d }));
+
+    set("handL", { cx: f(HL[0]), cy: f(HL[1]) });
+    set("handR", { cx: f(HR[0]), cy: f(HR[1]) });
+    set("footL", { cx: f(p.flx - 4), cy: f(p.fly) });
+    set("footR", { cx: f(p.frx + 4), cy: f(p.fry) });
+
+    /* Cables: del suelo a la mano */
+    const endL = [mix(368, HL[0] + 3, p.gripL), mix(357, HL[1], p.gripL)];
+    const endR = [mix(432, HR[0] - 3, p.gripR), mix(357, HR[1], p.gripR)];
+    set("cableL", { d: `M150 357C250 361 ${f(endL[0] - 4)} ${f(Math.min(359, endL[1] + 80))} ${f(endL[0])} ${f(endL[1])}` });
+    set("cableR", { d: `M650 357C550 361 ${f(endR[0] + 4)} ${f(Math.min(359, endR[1] + 80))} ${f(endR[0])} ${f(endR[1])}` });
+    set("plugL", { transform: `translate(${f(endL[0] + 5)} ${f(endL[1])})` });
+    set("plugR", { transform: `translate(${f(endR[0] - 5)} ${f(endR[1])})` });
+
+    /* Cara */
+    const blink = (time % 3.4) < .12 ? .15 : 1;
+    eyes.forEach(e => e.setAttribute("ry", f(3.5 * blink)));
+    const dizzy = p.dizzy > .5;
+    set("eyes", { opacity: dizzy ? 0 : 1 });
+    set("dizzy", { opacity: dizzy ? 1 : 0 });
+    const worry = p.scratch * 4;
+    set("brows", { d: `M383 ${f(208 + worry / 2)}L396 ${f(209 - worry / 2)}M404 ${f(209 + worry / 4)}L417 ${f(208 - worry)}` });
+    set("mouth", { ry: f(2.5 + 6 * Math.max(p.shock, p.dizzy * .4)) });
+    set("frazz", { opacity: f(p.frazz) });
+    set("hair", { opacity: f(1 - p.frazz) });
+
+    /* Descarga eléctrica */
+    const xray = p.shock > .5 ? (Math.sin(local * 14) > -.75 ? 1 : .25) : 0;
+    bones.forEach(b => b.setAttribute("opacity", xray));
+    $("hero").style.filter = p.shock > .5
+      ? "drop-shadow(0 0 6px #fff27a) drop-shadow(0 0 18px #ffd60a)"
+      : "none";
+    $("code").classList.toggle("zap", zapping);
+    $("scene").classList.toggle("shake", zapping && local < .8);
+    $("flash").style.opacity = zapping ? Math.max(0, 1 - local / .9) : 0;
+    $("bolts").innerHTML = zapping
+      ? [[150, 357], [650, 357], [242, 252], [569, 182]]
+          .map((src, i) => `<path d="${bolt(src, i % 2 ? endR : endL)}" opacity="${i < 2 ? 1 : .55}"/>`).join("")
+      : "";
+
+    const chest = onBody(p, 400, 275);
+    if (zapping) for (let i = 0; i < 3; i++) addSpark(chest[0], chest[1], 1.7);
+    if (fx === "spark" && local > .3) addSpark((endL[0] + endR[0]) / 2, endL[1], .8);
+
+    const crown = onBody(p, 400, 190);
+    if (fx === "smoke" && Math.random() < dt * 12) addPuff(crown[0], crown[1]);
+
+    stepParticles(sparks, dt, (q, life) => {
+      q.vy += 220 * dt;
+      set2(q.node, { cx: f(q.x), cy: f(q.y), opacity: f(life) });
+    });
+    stepParticles(puffs, dt, (q, life) => {
+      set2(q.node, { cx: f(q.x), cy: f(q.y), r: f(3 + 10 * (1 - life)), opacity: f(life * .45) });
+    });
+
+    orbit.setAttribute("opacity", dizzy ? 1 : 0);
+    [...orbit.children].forEach((s, i) => {
+      const a = time * 4 + i * 2.094;
+      set2(s, { x: f(crown[0] + Math.cos(a) * 42), y: f(crown[1] + Math.sin(a) * 11) });
+    });
+
+    bubble(text, crown[0], crown[1], zapping);
+  }
+
+  function set2(node, attrs) {
+    for (const k in attrs) node.setAttribute(k, attrs[k]);
+  }
+
+  /* ---------- Bucle ---------- */
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (calm) {
+    render(starts[0] + 1, 1, 0);
+    return;
+  }
+
+  let offset = 0, last = null;
+
+  function frame(now) {
+    const time = now / 1000;
+    const dt = last === null ? 0 : Math.min(.05, time - last);
+    last = time;
+    render((time + offset) % total, time, dt);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  /* Botón o clic en la escena: saltar al momento de conectar los cables */
+  function zap() {
+    const now = performance.now() / 1000;
+    const i = steps.findIndex(s => s[0] === aim);
+    const t = (now + offset) % total;
+    if (t >= starts[i] && t < starts[i + 4]) return;
+    offset = starts[i] - now;
+  }
+  $("zapBtn").addEventListener("click", zap);
+  $("scene").addEventListener("click", zap);
+})();
+</script>
+</body>
+</html>
